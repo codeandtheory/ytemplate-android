@@ -1,6 +1,8 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    id("com.google.dagger.hilt.android")
 }
 
 android {
@@ -37,7 +39,7 @@ android {
         compose =  true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion  = "1.1.1"
+        kotlinCompilerExtensionVersion  = ytemplate.android.build.BuildPlugins.COMPOSE_COMPILER
     }
     packagingOptions {
         resources {
@@ -55,6 +57,12 @@ dependencies {
     implementation (androidLib.COMPOSE_UI)
     implementation (androidLib.COMPOSE_PREVIEW)
     implementation (androidLib.COMPOSE_MATERIAL)
+    implementation(androidLib.COMPOSE_VIEW_MODEL)
+    implementation(androidLib.COMPOSE_NAV)
+    implementation(androidLib.HILT_ANDROID)
+    kapt(androidLib.HILT_COMPILER)
+    implementation(androidLib.HILT_NAV_COMPOSE)
+
     testImplementation (testLib.JUNIT)
     androidTestImplementation (androidLib.JUNIT_ANDROID)
     androidTestImplementation (androidLib.ESPRESSO_TEST)
