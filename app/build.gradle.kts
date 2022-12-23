@@ -17,7 +17,7 @@ android {
         versionCode = 1
         versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner = "ytemplate.android.HiltTestRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -53,15 +53,30 @@ dependencies {
     val testLib = ytemplate.android.build.TestLib
     implementation (androidLib.CORE_KTX)
     implementation (androidLib.RUNTIME_KTX)
+
     implementation (androidLib.COMPOSE_ACTIVITY)
     implementation (androidLib.COMPOSE_UI)
     implementation (androidLib.COMPOSE_PREVIEW)
     implementation (androidLib.COMPOSE_MATERIAL)
     implementation(androidLib.COMPOSE_VIEW_MODEL)
     implementation(androidLib.COMPOSE_NAV)
+    androidTestImplementation(androidLib.COMPOSE_NAV_TEST)
     implementation(androidLib.HILT_ANDROID)
     kapt(androidLib.HILT_COMPILER)
     implementation(androidLib.HILT_NAV_COMPOSE)
+    //Hilt instrumented test
+    androidTestImplementation(androidLib.HILT_TEST)
+    kaptAndroidTest(androidLib.HILT_COMPILER)
+
+    //coroutine
+    implementation(androidLib.COROUTINE)
+    testImplementation(androidLib.COROUTINE_TEST)
+    //Room
+    implementation(androidLib.ROOM_RUNTIME)
+    annotationProcessor(androidLib.ROOM_COMPILER)
+    kapt(androidLib.ROOM_COMPILER)
+    implementation(androidLib.ROOM_KTX)
+    testImplementation(androidLib.ROOM_TEST)
 
     testImplementation (testLib.JUNIT)
     androidTestImplementation (androidLib.JUNIT_ANDROID)

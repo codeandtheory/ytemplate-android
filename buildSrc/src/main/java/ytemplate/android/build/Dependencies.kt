@@ -26,6 +26,8 @@ object AndroidLib {
         const val ESPRESSO = "3.5.0"
         const val HILT = BuildPlugins.HILT_PLUGIN
         const val HILT_NAV_COMPOSE = "1.0.0"
+        const val COROUTINE = "1.6.4"
+        const val ROOM= "2.4.3"
     }
     const val CORE_KTX = "androidx.core:core-ktx:${Version.CORE_KTX}"
     const val RUNTIME_KTX = "androidx.lifecycle:lifecycle-runtime-ktx:${Version.ANDROIDX_LIFE_CYCLE}"
@@ -35,9 +37,19 @@ object AndroidLib {
     const val COMPOSE_MATERIAL = "androidx.compose.material:material:${Version.COMPOSE_MATERIAL}"
     const val COMPOSE_VIEW_MODEL = "androidx.lifecycle:lifecycle-viewmodel-compose:${Version.ANDROIDX_LIFE_CYCLE}"
     const val COMPOSE_NAV = "androidx.navigation:navigation-compose:${Version.COMPOSE_NAVIGATION}"
+    const val COMPOSE_NAV_TEST = "androidx.navigation:navigation-testing:${Version.COMPOSE_NAVIGATION}"
     const val HILT_ANDROID = "com.google.dagger:hilt-android:${Version.HILT}"
     const val HILT_COMPILER = "com.google.dagger:hilt-android-compiler:${Version.HILT}"
     const val HILT_NAV_COMPOSE = "androidx.hilt:hilt-navigation-compose:${Version.HILT_NAV_COMPOSE}"
+    const val HILT_TEST = "com.google.dagger:hilt-android-testing:${Version.HILT}"
+    //Coroutine
+    const val COROUTINE = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Version.COROUTINE}"
+    const val COROUTINE_TEST = "org.jetbrains.kotlinx:kotlinx-coroutines-test:${Version.COROUTINE}"
+    //Room database
+    const val ROOM_RUNTIME = "androidx.room:room-runtime:${Version.ROOM}"
+    const val ROOM_COMPILER = "androidx.room:room-compiler:${Version.ROOM}"
+    const val ROOM_KTX = "androidx.room:room-ktx:${Version.ROOM}"
+    const val ROOM_TEST = "androidx.room:room-testing:${Version.ROOM}"
     //Android Testing
     const val JUNIT_ANDROID = "androidx.test.ext:junit:${Version.ANDROID_JUNIT}"
     const val ESPRESSO_TEST = "androidx.test.espresso:espresso-core:${Version.ESPRESSO}"
