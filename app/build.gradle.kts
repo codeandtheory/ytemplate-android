@@ -7,7 +7,7 @@ plugins {
 }
 
 android {
-    namespace ="co.yml.projectsetp"
+    namespace ="ytemplate.android"
     val androidSDK = ytemplate.android.build.AndroidSdk
     compileSdk =  androidSDK.COMPILE_SDK
 
