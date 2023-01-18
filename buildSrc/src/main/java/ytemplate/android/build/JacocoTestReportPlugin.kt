@@ -117,20 +117,22 @@ class JacocoTestReportPlugin : Plugin<Project> {
                     sourcePath = "${flavorName}/${buildTypeName}"
                 }
                 val testTaskName = "test${sourceName.capitalized()}UnitTest"
-                addTestCoverageTask(testTaskName, sourceName, sourcePath, flavorName, buildTypeName)
+                val androidTestTaskName = "create${sourceName.capitalized()}CoverageReport"
+                addTestCoverageTask(testTaskName, androidTestTaskName, sourceName, sourcePath, flavorName, buildTypeName)
             }
         }
     }
 
     private fun Project.addTestCoverageTask(
         taskName: String,
+        androidTestTaskName: String,
         sourceName: String,
         sourcePath: String,
         flavorName: String,
         buildTypeName: String
     ) {
-        tasks.register<JacocoReport>("${taskName}Coverage", ) {
-            dependsOn(taskName)
+        tasks.register<JacocoReport>("create${sourceName.capitalized()}JacocoReport" ) {
+            dependsOn(taskName,androidTestTaskName)
             group = "Reporting"
             description = "Generate test coverage reports on the ${sourceName.capitalized()} build"
             val javaDirectories =
@@ -141,9 +143,9 @@ class JacocoTestReportPlugin : Plugin<Project> {
                 exclude(excludedFiles)
             }
             val coverageDirectories = listOf(
-                    "src/main/java",
-                    "src/$flavorName/java",
-                    "src/$buildTypeName/java")
+                "src/main/java",
+                "src/$flavorName/java",
+                "src/$buildTypeName/java")
 
             classDirectories.setFrom(files(javaDirectories, kotlinDirectories))
             additionalClassDirs.setFrom(files(coverageDirectories))
@@ -153,14 +155,19 @@ class JacocoTestReportPlugin : Plugin<Project> {
                 xml.required.set(true)
                 html.required.set(true)
             }
+            val androidTestsData =
+                fileTree("${project.buildDir}/outputs/code_coverage/debugAndroidTest/connected/") {
+                    include(listOf("**/*.ec"))
+                }
             val executionDataFiles = fileTree(project.buildDir) {
                 setIncludes(listOf("**/${taskName}.exec"))
             }
             executionData.setFrom(
-                executionDataFiles.files
+                executionDataFiles.files,
+                androidTestsData.files
             )
             doLast {
-                jacocoTestReport("${taskName}Coverage")
+                jacocoTestReport("create${sourceName.capitalized()}JacocoReport")
             }
         }
     }
