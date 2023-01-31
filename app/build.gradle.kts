@@ -4,6 +4,7 @@ plugins {
     kotlin("kapt")
     id("com.google.dagger.hilt.android")
     id("jacoco-reports")
+    id("org.jetbrains.kotlin.plugin.serialization")
 }
 
 android {
@@ -55,6 +56,7 @@ android {
 }
 
 dependencies {
+    androidTestImplementation(project(mapOf("path" to ":app")))
     val androidLib = ytemplate.android.build.AndroidLib
     val testLib = ytemplate.android.build.TestLib
     implementation (androidLib.CORE_KTX)
@@ -77,12 +79,22 @@ dependencies {
     //coroutine
     implementation(androidLib.COROUTINE)
     testImplementation(androidLib.COROUTINE_TEST)
+    testImplementation(androidLib.COROUTINE_TURBINE)
     //Room
     implementation(androidLib.ROOM_RUNTIME)
     annotationProcessor(androidLib.ROOM_COMPILER)
     kapt(androidLib.ROOM_COMPILER)
     implementation(androidLib.ROOM_KTX)
     testImplementation(androidLib.ROOM_TEST)
+    //Ktor
+    implementation(androidLib.KTOR_CORE)
+    implementation(androidLib.KTOR_CLIENT)
+    implementation(androidLib.KTOR_CONTENT_NEGOTIATION)
+    implementation(androidLib.KTOR_SERILIZATION)
+    implementation(androidLib.KTOR_CLIENT_LOGGING)
+    implementation(androidLib.KOTLINX_SERILIZATION)
+    testImplementation(androidLib.KTOR_CLIENT_MOCK)
+    androidTestImplementation(androidLib.KTOR_CLIENT_MOCK)
 
     testImplementation (testLib.JUNIT)
     androidTestImplementation (androidLib.JUNIT_ANDROID)
@@ -90,4 +102,5 @@ dependencies {
     androidTestImplementation (androidLib.COMPOSE_UI_TESTING)
     debugImplementation (androidLib.COMPOSE_TOOLING_TESTING)
     debugImplementation (androidLib.COMPOSE_UI_MANIFEST_TEST)
+
 }

@@ -6,6 +6,8 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.foundation.lazy.items
 import androidx.compose.material.Button
 import androidx.compose.material.OutlinedTextField
 import androidx.compose.material.Scaffold
@@ -26,13 +28,16 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.repeatOnLifecycle
 import ytemplate.android.ui.theme.YTemplateTheme
 
+/**
+ * Dummy screen to showcase the working of all components.
+ */
 @Composable
-fun MyModelScreen(viewModel: MyModelViewModel = hiltViewModel()) {
+fun MyModelScreen(viewModel: MyPostViewModel = hiltViewModel()) {
     val lifecycle = LocalLifecycleOwner.current.lifecycle
     var name by remember {
         mutableStateOf("")
     }
-    val items by produceState<MyModelUiState>(
+    val dataState by produceState<MyModelUiState>(
         initialValue = MyModelUiState.Loading,
         key1 = lifecycle,
         key2 = viewModel,
@@ -45,7 +50,9 @@ fun MyModelScreen(viewModel: MyModelViewModel = hiltViewModel()) {
         })
 
     Scaffold(modifier = Modifier.fillMaxSize()) {
-        Column(modifier = Modifier.fillMaxWidth().padding(20.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
+        Column(modifier = Modifier
+            .fillMaxWidth()
+            .padding(20.dp), verticalArrangement = Arrangement.spacedBy(10.dp)) {
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -54,17 +61,19 @@ fun MyModelScreen(viewModel: MyModelViewModel = hiltViewModel()) {
                 OutlinedTextField(value = name, onValueChange = {
                     name = it
                 }, modifier = Modifier.testTag("name_field"))
-                Button(onClick = { viewModel.addModel(name) }, modifier = Modifier.testTag("add_button")) {
+                Button(onClick = {  }, modifier = Modifier.testTag("add_button")) {
                     Text(text = "Add")
                 }
             }
-
-            if (items is MyModelUiState.Success) {
-                (items as MyModelUiState.Success).data.forEach {
-                    Text(text = it)
+            LazyColumn(modifier = Modifier.fillMaxWidth()){
+                if (dataState is MyModelUiState.Success) {
+                    items((dataState as MyModelUiState.Success).data, key = {
+                        it.id
+                    }){
+                        Text(text = it.title)
+                    }
                 }
             }
-
         }
     }
 }

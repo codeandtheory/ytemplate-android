@@ -6,6 +6,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import ytemplate.android.ui.mymodel.MyModelScreen
 
+/**
+ * Application navigation component.
+ */
 @Composable
 fun MainNavigation() {
     val navController = rememberNavController()

@@ -1,26 +1,29 @@
-package ytemplate.android.data
+package ytemplate.android.data.di
 
 import dagger.Binds
 import dagger.Module
+import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import dagger.hilt.testing.TestInstallIn
+import ytemplate.android.data.MyPostRepository
+import ytemplate.android.data.MyPostRepositoryImpl
 import ytemplate.android.data.datasource.LocalPostDataSource
 import ytemplate.android.data.datasource.LocalPostDataSourceImpl
 import ytemplate.android.data.datasource.RemotePostDataSource
 import ytemplate.android.data.datasource.RemotePostDataSourceImpl
-import ytemplate.android.data.di.RepositoryModule
 
+/**
+ * Repository module, will bind the repository and data source instance based on the demand
+ */
 @Module
-@TestInstallIn(
-    components = [SingletonComponent::class],
-    replaces = [RepositoryModule::class]
-)
-interface TestDataModule {
+@InstallIn(SingletonComponent::class)
+interface RepositoryModule {
+
     @Binds
-    fun bindMyModelRepository(myPostRepository: MyPostRepositoryImpl): MyPostRepository
+    fun bindMyModelRepository(myModelRepository: MyPostRepositoryImpl): MyPostRepository
     @Binds
     fun bindLocalPostDataSource(localPostDataSource: LocalPostDataSourceImpl): LocalPostDataSource
 
     @Binds
     fun bindRemotePostDataSource(remotePostDataSource: RemotePostDataSourceImpl): RemotePostDataSource
+
 }
