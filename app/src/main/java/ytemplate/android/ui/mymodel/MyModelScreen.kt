@@ -43,6 +43,7 @@ fun MyModelScreen(viewModel: MyPostViewModel = hiltViewModel()) {
         key2 = viewModel,
         producer = {
             lifecycle.repeatOnLifecycle(state = Lifecycle.State.STARTED) {
+                viewModel.getAllPost()
                 viewModel.uiState.collect {
                     value = it
                 }

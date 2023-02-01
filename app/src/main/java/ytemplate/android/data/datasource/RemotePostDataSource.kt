@@ -1,14 +1,14 @@
 package ytemplate.android.data.datasource
 
-
-import io.ktor.client.*
-import io.ktor.client.call.*
-import io.ktor.client.request.*
+import io.ktor.client.HttpClient
+import io.ktor.client.call.body
+import io.ktor.client.request.get
+import io.ktor.client.request.url
+import javax.inject.Inject
 import ytemplate.android.data.model.PostDTO
 import ytemplate.android.data.model.PostRequest
 import ytemplate.android.infra.AppResult
 import ytemplate.android.infra.Routes
-import javax.inject.Inject
 
 /**
  * RemotePostDataSource will take care all post related remote operation.
