@@ -18,7 +18,7 @@ import org.junit.Before
 import org.junit.Test
 import ytemplate.android.data.datasource.LocalPostDataSourceImpl
 import ytemplate.android.data.datasource.RemotePostDataSourceImpl
-import ytemplate.android.infra.AppRequest
+import ytemplate.android.infra.AppResult
 
 class MyPostRepositoryImplTest {
     private val remotePostDataMock = RemotePostDataMock()
@@ -42,7 +42,7 @@ class MyPostRepositoryImplTest {
                 localPostDataSource = LocalPostDataSourceImpl(fakePostDao)
             )
         val data = repository.fetchAllPost()
-        assert(data is AppRequest.Success)
+        assert(data is AppResult.Success)
     }
 
     @OptIn(ExperimentalCoroutinesApi::class)

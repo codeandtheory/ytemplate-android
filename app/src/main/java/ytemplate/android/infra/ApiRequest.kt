@@ -8,33 +8,33 @@ import kotlinx.coroutines.flow.onStart
 /**
  * AppRequest is generic interface for maintaining every request status.
  */
-sealed interface AppRequest<out T> {
+sealed interface AppResult<out T> {
     /**
      * For the success request
      * @param data: Original data
      */
-    data class Success<T>(val data: T) : AppRequest<T>
+    data class Success<T>(val data: T) : AppResult<T>
 
     /**
      * For the failure request
      * @param exception: Exception
      */
-    data class Error(val exception: Throwable? = null) : AppRequest<Nothing>
+    data class Error(val exception: Throwable? = null) : AppResult<Nothing>
 
     /**
      * For maintaining the loading state,
      */
-    object Loading : AppRequest<Nothing>
+    object Loading : AppResult<Nothing>
 }
 
 /**
  * Extension for converting to flow to result
  */
-fun <T> Flow<T>.asResult(): Flow<AppRequest<T>> {
+fun <T> Flow<T>.asResult(): Flow<AppResult<T>> {
     return this
-        .map<T, AppRequest<T>> {
-            AppRequest.Success(it)
+        .map<T, AppResult<T>> {
+            AppResult.Success(it)
         }
-        .onStart { emit(AppRequest.Loading) }
-        .catch { emit(AppRequest.Error(it)) }
+        .onStart { emit(AppResult.Loading) }
+        .catch { emit(AppResult.Error(it)) }
 }

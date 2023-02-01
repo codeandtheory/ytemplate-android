@@ -15,9 +15,14 @@ import javax.inject.Singleton
 /**
  * RemoteModule, for maintaining the all network related DI operations.
  */
+
+private const val CONNECTION_TIMEOUT = 60L
+private const val CONNECTION_READ_TIME_OUT = 60L
+private const val CONNECTION_WRITE_TIME_OUT = 60L
 @Module
 @InstallIn(SingletonComponent::class)
 class RemoteModule {
+
 
     /**
      * Providing the HttpClient instance for the remote communication.
@@ -36,9 +41,9 @@ class RemoteModule {
 
                 config {
                     followRedirects(true)
-                    connectTimeout(60L, TimeUnit.SECONDS)
-                    readTimeout(60L, TimeUnit.SECONDS)
-                    writeTimeout(60L, TimeUnit.SECONDS)
+                    connectTimeout(CONNECTION_TIMEOUT, TimeUnit.SECONDS)
+                    readTimeout(CONNECTION_READ_TIME_OUT, TimeUnit.SECONDS)
+                    writeTimeout(CONNECTION_WRITE_TIME_OUT, TimeUnit.SECONDS)
                 }
                 //addInterceptor()
             }

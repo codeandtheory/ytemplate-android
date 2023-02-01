@@ -4,5 +4,5 @@ package ytemplate.android.infra
  * Routes class, for maintaining the all routes
  */
 object Routes {
-    private const val BASE_URL = ""
+    const val GET_POST = "https://jsonplaceholder.typicode.com/posts"
 }

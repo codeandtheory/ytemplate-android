@@ -6,7 +6,7 @@ import ytemplate.android.data.datasource.LocalPostDataSource
 import ytemplate.android.data.datasource.RemotePostDataSource
 import ytemplate.android.data.model.PostRequest
 import ytemplate.android.database.model.Post
-import ytemplate.android.infra.AppRequest
+import ytemplate.android.infra.AppResult
 import javax.inject.Inject
 
 /**
@@ -26,7 +26,7 @@ interface MyPostRepository {
     /**
      * Fetch all post data from remote server and push to the local database.
      */
-    suspend fun fetchAllPost(): AppRequest<List<Post>?>
+    suspend fun fetchAllPost(): AppResult<List<Post>?>
 }
 
 /**
@@ -48,9 +48,9 @@ class MyPostRepositoryImpl @Inject constructor(
         remotePostDataSource.addPost(post)
     }
 
-    override suspend fun fetchAllPost(): AppRequest<List<Post>?> {
+    override suspend fun fetchAllPost(): AppResult<List<Post>?> {
         val remoteData = remotePostDataSource.fetchAllPost()
-        if (remoteData is AppRequest.Success) {
+        if (remoteData is AppResult.Success) {
             val dataList = remoteData.data!!.map {
                 Post(
                     id = it.id,
@@ -63,9 +63,9 @@ class MyPostRepositoryImpl @Inject constructor(
             localPostDataSource.addAll(
                 dataList
             )
-            return AppRequest.Success(dataList)
+            return AppResult.Success(dataList)
         } else {
-            return AppRequest.Error((remoteData as AppRequest.Error).exception)
+            return AppResult.Error((remoteData as AppResult.Error).exception)
         }
     }
 }
