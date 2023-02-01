@@ -2,10 +2,10 @@ package ytemplate.android.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
-import ytemplate.android.database.model.MyModel
-import ytemplate.android.database.model.MyModelDao
+import ytemplate.android.database.model.Post
+import ytemplate.android.database.model.PostDao
 
-@Database(entities = [MyModel::class], version = 1)
+@Database(entities = [Post::class], version = 1)
 abstract class AppDataBase : RoomDatabase() {
-    abstract fun myModelDao(): MyModelDao
+    abstract fun myModelDao(): PostDao
 }
