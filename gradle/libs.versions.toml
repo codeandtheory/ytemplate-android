@@ -1,0 +1,100 @@
+[versions]
+# Define the dependency versions
+#compose
+compose_ui = "1.3.2"
+compose_material = "1.1.1"
+compose_activity="1.6.1"
+compose_navigation = "2.5.3"
+compose_compiler = "1.3.2"
+
+#ktx
+core_ktx = "1.9.0"
+android_life_cycle = "2.5.1"
+
+#hilt
+hilt = "2.44"
+hilt_nav_compose = "1.0.0"
+
+#coroutine
+coroutine = "1.6.4"
+turbine = "0.12.1"
+
+#room
+room= "2.4.3"
+
+#ktor
+ktor = "2.2.2"
+
+#android test
+kotlinx_serialization = "1.4.0"
+android_junit = "1.1.4"
+espresso = "3.5.0"
+junit = "4.13.2"
+
+#android sdk
+min_sdk = "26"
+target_sdk = "32"
+compile_sdk = "33"
+
+[libraries]
+#compose
+compose_ui = { module = "androidx.compose.ui:ui", version.ref = "compose_ui" }
+compose_material = { module = "androidx.compose.material:material", version.ref = "compose_material" }
+compose_activity = { module = "androidx.activity:activity-compose", version.ref = "compose_activity" }
+compose_preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose_ui" }
+compose_nav = { module = "androidx.navigation:navigation-compose", version.ref = "compose_navigation" }
+compose_view_model = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "android_life_cycle" }
+compose_nav_test = { module = "androidx.navigation:navigation-testing", version.ref = "compose_navigation" }
+
+#hilt
+hilt_compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
+hilt_android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
+hilt_test = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
+hilt_nav_compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt_nav_compose" }
+
+#ktx
+core_ktx = { module = "androidx.core:core-ktx", version.ref = "core_ktx" }
+runtime_ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "android_life_cycle" }
+
+#Coroutine
+coroutine = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutine" }
+coroutine_test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutine" }
+coroutine_turbins = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+
+#Room database
+room_runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
+room_compiler = { module = "androidx.room:room-compiler", version.ref = "room" }
+room_ktx = { module = "androidx.room:room-ktx", version.ref = "room" }
+room_test = { module = "androidx.room:room-testing", version.ref = "room" }
+
+#Remote setup
+ktor_core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor_client = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
+ktor_content_negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
+ktor_serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
+ktor_client_logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
+kotlinx_serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx_serialization" }
+ktor_client_mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
+
+#Android Testing
+junit = { module = "junit:junit", version.ref = "junit" }
+junit_android = { module = "androidx.test.ext:junit", version.ref = "android_junit" }
+espresso_test = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
+compose_ui_testing = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose_ui" }
+compose_tooling_testing = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose_ui" }
+compose_ui_manifest_test =  { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose_ui" }
+
+[bundles]
+# Define bundles/groups of libraries
+compose = ["compose.ui", "compose.material","compose.activity","compose.preview","compose.nav","compose.view.model"]
+ktx = ["core.ktx", "runtime.ktx"]
+hilt = ["hilt.android", "hilt.nav.compose"]
+coroutine_test = ["coroutine.test", "coroutine.turbins"]
+room = ["room.runtime", "room.ktx"]
+ktor = ["ktor.core", "ktor.client","ktor.content.negotiation","ktor.serialization","ktor.client.logging","kotlinx.serialization"]
+android_test = ["junit.android", "espresso.test","compose.ui.testing"]
+android_debug_test = ["compose.tooling.testing", "compose.ui.manifest.test"]
+
+[plugins]
+# Define Plugins
+hilt_plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }

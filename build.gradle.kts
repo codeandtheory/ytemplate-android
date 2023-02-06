@@ -1,7 +1,6 @@
 
 plugins {
-    val buildVersion = ytemplate.android.build.BuildPlugins
-    id("com.google.dagger.hilt.android") version buildVersion.HILT_PLUGIN apply false
+    alias(versionCatalogLibs.plugins.hilt.plugin) apply false
 }
 
 buildscript {

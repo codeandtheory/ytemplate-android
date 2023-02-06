@@ -11,6 +11,11 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
     }
+    versionCatalogs {
+        create("versionCatalogLibs") {
+            from(files("gradle/libs.versions.toml"))
+        }
+    }
 }
 rootProject.name = "YTemplate"
 include (":app")
