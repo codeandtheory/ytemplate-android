@@ -2,7 +2,7 @@ plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
     kotlin("kapt")
-    id("com.google.dagger.hilt.android")
+    alias(versionCatalogLibs.plugins.hilt.plugin)
     id("jacoco-reports")
     id("org.jetbrains.kotlin.plugin.serialization")
 }
@@ -39,7 +39,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "11"
+        jvmTarget = versionCatalogLibs.versions.kotlin.jvm.target.get()
     }
     buildFeatures {
         compose =  true

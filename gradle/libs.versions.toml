@@ -1,5 +1,11 @@
 [versions]
 # Define the dependency versions
+#gradle
+android_gradle_plugin = "7.4.1"
+kotlin_version = "1.7.20"
+kotlin_jvm_target = "11"
+sqaureup = "1.13.0"
+
 #compose
 compose_ui = "1.3.2"
 compose_material = "1.1.1"
@@ -37,6 +43,12 @@ target_sdk = "32"
 compile_sdk = "33"
 
 [libraries]
+#buildSrc
+build_gradle = { module = "com.android.tools.build:gradle", version.ref = "android_gradle_plugin" }
+kotlin_gradle_plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin_version" }
+sqaureup_javapoet = { module = "com.squareup:javapoet", version.ref = "sqaureup" }
+kotlin_serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin_version" }
+
 #compose
 compose_ui = { module = "androidx.compose.ui:ui", version.ref = "compose_ui" }
 compose_material = { module = "androidx.compose.material:material", version.ref = "compose_material" }
@@ -94,6 +106,7 @@ room = ["room.runtime", "room.ktx"]
 ktor = ["ktor.core", "ktor.client","ktor.content.negotiation","ktor.serialization","ktor.client.logging","kotlinx.serialization"]
 android_test = ["junit.android", "espresso.test","compose.ui.testing"]
 android_debug_test = ["compose.tooling.testing", "compose.ui.manifest.test"]
+build_src = ["build.gradle", "kotlin.gradle.plugin","sqaureup.javapoet","kotlin.serialization"]
 
 [plugins]
 # Define Plugins
