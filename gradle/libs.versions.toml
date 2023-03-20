@@ -1,25 +1,47 @@
 [versions]
 # Define the dependency versions
+#kotlin
+kotlinVersion = "1.8.10"
+kotlinJvmTarget = "11"
+kotlinxCoroutines = "1.6.4"
+kotlinxSerializationJson = "1.4.1"
+
 #gradle
-android_gradle_plugin = "7.4.1"
-kotlin_version = "1.7.20"
-kotlin_jvm_target = "11"
-sqaureup = "1.13.0"
+androidGradlePlugin = "7.4.1"
 
-#compose
-compose_ui = "1.3.2"
-compose_material = "1.1.1"
-compose_activity="1.6.1"
-compose_navigation = "2.5.3"
-compose_compiler = "1.3.2"
-
-#ktx
-core_ktx = "1.9.0"
-android_life_cycle = "2.5.1"
+#androidx
+androidxComposeBom = "2022.12.00"
+androidxActivityCompose = "1.6.1"
+androidxAppCompat = "1.5.1"
+androidxComposeCompiler = "1.4.3"
+androidxCore = "1.9.0"
+androidxLifecycle = "2.5.1"
+androidxNavigation = "2.5.3"
+androidxEspresso = "3.5.0"
+androidxTestRules = "1.5.0"
+androidxTestRunner = "1.5.1"
+androidxTestMonitor = "1.6.0"
+androidxTestCore = "1.4.0"
+androidxTestExt = "1.1.4"
 
 #hilt
 hilt = "2.44"
 hilt_nav_compose = "1.0.0"
+hiltExt = "1.0.0"
+
+#jacoco
+jacoco = "0.8.7"
+
+#compose
+compose_ui = "1.3.3"
+compose_ui_testing = "1.4.0-beta01"
+
+
+#ktx
+core_ktx = "1.9.0"
+
+#ksp
+ksp = "1.7.21-1.0.8"
 
 #coroutine
 coroutine = "1.6.4"
@@ -32,46 +54,73 @@ room= "2.4.3"
 ktor = "2.2.2"
 
 #android test
-kotlinx_serialization = "1.4.0"
+junit4 = "4.13.2"
+
 android_junit = "1.1.4"
 espresso = "3.5.0"
 junit = "4.13.2"
+jupiter_junit = "5.5.2"
 
-#android sdk
-min_sdk = "26"
-target_sdk = "32"
-compile_sdk = "33"
+#Firebase
+firebase_analytics = "21.2.0"
+firebase_bom = "29.0.0"
+
+#Mock
+anotation = "1.3.0"
+mockk_android = "1.12.1"
+test_runner = "1.4.0"
+
+#sonar
+sonar = "4.0.0.2929"
+#dokka
+dokka = "1.7.20"
+#ktlint
+ktlint = "11.2.0"
 
 [libraries]
-#buildSrc
-build_gradle = { module = "com.android.tools.build:gradle", version.ref = "android_gradle_plugin" }
-kotlin_gradle_plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlin_version" }
-sqaureup_javapoet = { module = "com.squareup:javapoet", version.ref = "sqaureup" }
-kotlin_serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlin_version" }
+# Project
+android_gradle_plugin = { module = "com.android.tools.build:gradle", version.ref = "androidGradlePlugin" }
+kotlin_gradle_plugin = { module = "org.jetbrains.kotlin:kotlin-gradle-plugin", version.ref = "kotlinVersion" }
+jacoco_core = { module = "org.jacoco:org.jacoco.core", version.ref = "jacoco" }
+kotlin_serialization = { module = "org.jetbrains.kotlin:kotlin-serialization", version.ref = "kotlinVersion" }
 
 #compose
-compose_ui = { module = "androidx.compose.ui:ui", version.ref = "compose_ui" }
-compose_material = { module = "androidx.compose.material:material", version.ref = "compose_material" }
-compose_activity = { module = "androidx.activity:activity-compose", version.ref = "compose_activity" }
-compose_preview = { module = "androidx.compose.ui:ui-tooling-preview", version.ref = "compose_ui" }
-compose_nav = { module = "androidx.navigation:navigation-compose", version.ref = "compose_navigation" }
-compose_view_model = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "android_life_cycle" }
-compose_nav_test = { module = "androidx.navigation:navigation-testing", version.ref = "compose_navigation" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivityCompose" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "androidxAppCompat" }
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "androidxComposeBom" }
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+androidx-compose-material-iconsExtended = { group = "androidx.compose.material", name = "material-icons-extended" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+androidx-compose-material3-windowSizeClass = { group = "androidx.compose.material3", name = "material3-window-size-class" }
+androidx-compose-runtime = { group = "androidx.compose.runtime", name = "runtime" }
+androidx-compose-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata" }
+androidx-compose-ui-test = { group = "androidx.compose.ui", name = "ui-test-junit4" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-manifest-test =  { group = "androidx.compose.ui", name = "ui-test-manifest"}
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-ui-util = { group = "androidx.compose.ui", name = "ui-util" }
+androidx-compose-ui-testManifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "androidxCore" }
+androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
+androidx-lifecycle-viewModelCompose = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-compose", version.ref = "androidxLifecycle" }
+androidx-lifecycle-viewModel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "androidxLifecycle" }
+androidx-navigation-testing = { group = "androidx.navigation", name = "navigation-testing", version.ref = "androidxNavigation" }
 
 #hilt
 hilt_compiler = { module = "com.google.dagger:hilt-android-compiler", version.ref = "hilt" }
 hilt_android = { module = "com.google.dagger:hilt-android", version.ref = "hilt" }
 hilt_test = { module = "com.google.dagger:hilt-android-testing", version.ref = "hilt" }
 hilt_nav_compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt_nav_compose" }
+hilt_ext_compiler = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hiltExt" }
 
 #ktx
 core_ktx = { module = "androidx.core:core-ktx", version.ref = "core_ktx" }
-runtime_ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "android_life_cycle" }
+runtime_ktx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "androidxLifecycle" }
 
 #Coroutine
 coroutine = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "coroutine" }
 coroutine_test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "coroutine" }
-coroutine_turbins = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
+coroutine_turbine = { module = "app.cash.turbine:turbine", version.ref = "turbine" }
 
 #Room database
 room_runtime = { module = "androidx.room:room-runtime", version.ref = "room" }
@@ -85,29 +134,61 @@ ktor_client = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor_content_negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 ktor_serialization = { module = "io.ktor:ktor-serialization-kotlinx-json", version.ref = "ktor" }
 ktor_client_logging = { module = "io.ktor:ktor-client-logging", version.ref = "ktor" }
-kotlinx_serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinx_serialization" }
+kotlinx_serialization = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 ktor_client_mock = { module = "io.ktor:ktor-client-mock", version.ref = "ktor" }
 
 #Android Testing
-junit = { module = "junit:junit", version.ref = "junit" }
-junit_android = { module = "androidx.test.ext:junit", version.ref = "android_junit" }
-espresso_test = { module = "androidx.test.espresso:espresso-core", version.ref = "espresso" }
-compose_ui_testing = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose_ui" }
-compose_tooling_testing = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose_ui" }
-compose_ui_manifest_test =  { module = "androidx.compose.ui:ui-test-manifest", version.ref = "compose_ui" }
+androidx-test-core = { group = "androidx.test", name = "core", version.ref = "androidxTestCore" }
+androidx-test-core-ktx = { group = "androidx.test", name = "core-ktx", version.ref = "androidxTestCore" }
+androidx-test-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "androidxEspresso" }
+androidx-test-ext = { group = "androidx.test.ext", name = "junit-ktx", version.ref = "androidxTestExt" }
+androidx-test-rules = { group = "androidx.test", name = "rules", version.ref = "androidxTestRules" }
+androidx-test-runner = { group = "androidx.test", name = "runner", version.ref = "androidxTestRunner" }
+androidx-test-monitor= { group = "androidx.test", name = "monitor", version.ref = "androidxTestMonitor" }
+
+androidx-junit = { module = "androidx.test.ext:junit", version.ref = "android_junit" }
+
+#Android Analytics
+kotlin_stdlib = { module = "org.jetbrains.kotlin:kotlin-stdlib-common", version.ref = "kotlinVersion" }
+kotlin_coroutines_core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutine" }
+
+#Android Analytics Test
+kotlin_common_test = { module = "org.jetbrains.kotlin:kotlin-test-common", version.ref = "kotlinVersion" }
+jupiter_junit = { module = "org.junit.jupiter:junit-jupiter", version.ref = "jupiter_junit" }
+
+#Firebase
+firebase_analytics = { module = "com.google.firebase:firebase-analytics", version.ref = "firebase_analytics" }
+firebase_bom = { module = "com.google.firebase:firebase-bom", version.ref = "firebase_bom" }
+
+#Mock
+anotation = { module = "androidx.annotation:annotation", version.ref = "anotation" }
+mockk_android = { module = "io.mockk:mockk-android", version.ref = "mockk_android" }
+test_runner = { module = "androidx.test:runner", version.ref = "test_runner" }
 
 [bundles]
 # Define bundles/groups of libraries
-compose = ["compose.ui", "compose.material","compose.activity","compose.preview","compose.nav","compose.view.model"]
-ktx = ["core.ktx", "runtime.ktx"]
-hilt = ["hilt.android", "hilt.nav.compose"]
-coroutine_test = ["coroutine.test", "coroutine.turbins"]
+compose = ["androidx.activity.compose", "androidx.compose.foundation", "androidx.navigation.compose", "androidx.compose.material3", "androidx.compose.material3.windowSizeClass", "androidx.compose.runtime","androidx.compose.ui.tooling","androidx.compose.ui.tooling.preview"]
+test = ["androidx.test.core","androidx.test.ext","androidx.test.rules","androidx.test.runner"]
 room = ["room.runtime", "room.ktx"]
+coroutine_test = ["coroutine.test", "coroutine.turbine"]
+ktx = ["core.ktx", "runtime.ktx"]
+hilt = ["hilt.compiler","hilt.android","hilt.test"]
 ktor = ["ktor.core", "ktor.client","ktor.content.negotiation","ktor.serialization","ktor.client.logging","kotlinx.serialization"]
-android_test = ["junit.android", "espresso.test","compose.ui.testing"]
-android_debug_test = ["compose.tooling.testing", "compose.ui.manifest.test"]
-build_src = ["build.gradle", "kotlin.gradle.plugin","sqaureup.javapoet","kotlin.serialization"]
+firebase = ["firebase.analytics","firebase.bom","core_ktx","androidx.appcompat"]
+mock =["mockk.android","anotation","test.runner"]
 
-[plugins]
 # Define Plugins
-hilt_plugin = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+[plugins]
+android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlinVersion" }
+android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
+android-test = { id = "com.android.test", version.ref = "androidGradlePlugin" }
+kotlin-jvm = { id = "org.jetbrains.kotlin.jvm", version.ref = "kotlinVersion" }
+kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlinVersion" }
+hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+kapt = { id = "org.jetbrains.kotlin.kapt", version.ref = "kotlinVersion" }
+jacoco = { id = "jacoco"}
+sonar = {id= "org.sonarqube", version.ref = "sonar"}
+dokka = {id = "org.jetbrains.dokka", version.ref = "dokka"}
+ktlint = {id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint"}

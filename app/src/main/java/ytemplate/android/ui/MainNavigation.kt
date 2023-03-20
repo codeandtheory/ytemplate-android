@@ -1,20 +1,21 @@
 package ytemplate.android.ui
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import ytemplate.android.ui.mymodel.MyModelScreen
+import ytemplate.android.feature.post.ui.PostListScreen
 
 /**
  * Application navigation component.
  */
 @Composable
-fun MainNavigation() {
+fun MainNavigation(modifier: Modifier = Modifier) {
     val navController = rememberNavController()
-    NavHost(navController = navController, startDestination = "main") {
+    NavHost(modifier = modifier, navController = navController, startDestination = "main") {
         composable("main") {
-            MyModelScreen()
+            PostListScreen()
         }
     }
 }

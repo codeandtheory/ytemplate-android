@@ -1,87 +1,33 @@
+@Suppress("DSL_SCOPE_VIOLATION") // scope violation issue: work around suggested from: https://github.com/gradle/gradle/issues/22797
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
-    alias(versionCatalogLibs.plugins.hilt.plugin)
-    id("jacoco-reports")
-    id("org.jetbrains.kotlin.plugin.serialization")
+    id("ytemplate.android.application")
+    id("ytemplate.android.application.jacoco")
+    id("ytemplate.android.application.compose")
+    id("ytemplate.android.hilt")
 }
 
 android {
-    namespace ="ytemplate.android"
-    compileSdk =  versionCatalogLibs.versions.compile.sdk.get().toInt()
-
+    namespace = "ytemplate.android"
     defaultConfig {
-        applicationId="ytemplate.android"
-        minSdk = versionCatalogLibs.versions.min.sdk.get().toInt()
-        targetSdk = versionCatalogLibs.versions.target.sdk.get().toInt()
+        applicationId = "ytemplate.android"
         versionCode = 1
         versionName = "1.0"
-
-        testInstrumentationRunner = "ytemplate.android.HiltTestRunner"
-        vectorDrawables {
-            useSupportLibrary = true
-        }
-    }
-    buildTypes {
-        getByName("release"){
-            isMinifyEnabled = false
-            proguardFiles(getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro")
-        }
-        getByName("debug") {
-            isMinifyEnabled  = false
-            enableUnitTestCoverage = true
-            enableAndroidTestCoverage = true
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = versionCatalogLibs.versions.kotlin.jvm.target.get()
-    }
-    buildFeatures {
-        compose =  true
-    }
-    composeOptions {
-        kotlinCompilerExtensionVersion  = versionCatalogLibs.versions.compose.compiler.get()
-    }
-    packagingOptions {
-        resources {
-            excludes += "/META-INF/{AL2.0,LGPL2.1}"
-        }
     }
 }
 
 dependencies {
-    //Compose
-    implementation (versionCatalogLibs.bundles.compose)
-    androidTestImplementation(versionCatalogLibs.compose.nav.test)
-    //ktx
-    implementation (versionCatalogLibs.bundles.ktx)
-    //hilt
-    implementation(versionCatalogLibs.bundles.hilt)
-    kapt(versionCatalogLibs.hilt.compiler)
-    androidTestImplementation(versionCatalogLibs.hilt.test)
-    kaptAndroidTest(versionCatalogLibs.hilt.compiler)
-    //coroutine
-    implementation(versionCatalogLibs.coroutine)
-    testImplementation(versionCatalogLibs.bundles.coroutine.test)
-    //Room
-    implementation(versionCatalogLibs.bundles.room)
-    annotationProcessor(versionCatalogLibs.room.compiler)
-    kapt(versionCatalogLibs.room.compiler)
-    testImplementation(versionCatalogLibs.room.test)
-    //Ktor
-    implementation (versionCatalogLibs.bundles.ktor)
-    testImplementation(versionCatalogLibs.ktor.client.mock)
-    androidTestImplementation(versionCatalogLibs.ktor.client.mock)
-    //Android Testing
-    androidTestImplementation (versionCatalogLibs.bundles.android.test)
-    testImplementation (versionCatalogLibs.junit)
-    debugImplementation (versionCatalogLibs.bundles.android.debug.test)
+    implementation(versionCatalogLibs.hilt.nav.compose)
+    implementation(versionCatalogLibs.androidx.lifecycle.viewModelCompose)
 
-    androidTestImplementation(project(mapOf("path" to ":app")))
+    implementation(project(mapOf("path" to ":core:ui")))
+    implementation(project(mapOf("path" to ":feature:post")))
 
+    androidTestImplementation(versionCatalogLibs.androidx.test.core)
+    androidTestImplementation(versionCatalogLibs.androidx.test.core.ktx)
+    androidTestImplementation(versionCatalogLibs.androidx.test.ext)
+    androidTestImplementation(versionCatalogLibs.androidx.test.runner)
+    androidTestImplementation(versionCatalogLibs.androidx.test.rules)
+
+    debugImplementation("androidx.compose.ui:ui-test-manifest:${versionCatalogLibs.versions.compose}")
+    androidTestImplementation(project(mapOf("path" to ":core:test")))
 }

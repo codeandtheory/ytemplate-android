@@ -7,6 +7,4 @@ import dagger.hilt.android.HiltAndroidApp
  * Application class.
  */
 @HiltAndroidApp
-class YTemplate : Application(){
-
-}
+class YTemplate : Application()
