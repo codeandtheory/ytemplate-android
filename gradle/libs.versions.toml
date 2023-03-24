@@ -51,7 +51,7 @@ turbine = "0.12.1"
 room= "2.4.3"
 
 #ktor
-ktor = "2.2.2"
+ktor = "2.2.4"
 
 #android test
 junit4 = "4.13.2"
