@@ -3,5 +3,5 @@
   "extends": [
     "config:base"
   ],
-  "baseBranches": ["multi_module"]
+  "baseBranches": ["feature/CM-1239-RenovateBotFix"]
 }
