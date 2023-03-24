@@ -7,7 +7,7 @@ kotlinxCoroutines = "1.6.4"
 kotlinxSerializationJson = "1.4.1"
 
 #gradle
-androidGradlePlugin = "7.4.1"
+androidGradlePlugin = "7.4.2"
 
 #androidx
 androidxComposeBom = "2022.12.00"
@@ -41,7 +41,7 @@ compose_ui_testing = "1.4.0-beta01"
 core_ktx = "1.9.0"
 
 #ksp
-ksp = "1.7.21-1.0.8"
+ksp = "1.8.10-1.0.9"
 
 #coroutine
 coroutine = "1.6.4"

@@ -23,8 +23,6 @@ import kotlin.time.Duration.Companion.milliseconds
  */
 @OptIn(ExperimentalCoroutinesApi::class)
 class MyPostViewModelTest {
-    private lateinit var repository: FakePostRepository
-
     /**
      * Set up
      *
@@ -32,7 +30,6 @@ class MyPostViewModelTest {
     @Before
     fun setUp() {
         Dispatchers.setMain(UnconfinedTestDispatcher())
-        repository = FakePostRepository()
     }
 
     /**
@@ -41,6 +38,7 @@ class MyPostViewModelTest {
      */
     @Test
     fun `test initial data is empty state`() = runTest {
+        var repository = FakePostRepository()
         val viewModel = MyPostViewModel(repository)
         viewModel.uiState.test {
             val firstDataState = awaitItem()
@@ -56,6 +54,7 @@ class MyPostViewModelTest {
      */
     @Test
     fun `test get data success state`() = runTest {
+        var repository = FakePostRepository()
         repository.fakePostApi.remotePostDataMock.setExpectSuccess()
         repository.fakePostApi.remotePostDataMock.setExpectedResponse(PlaceHolderData.DUMMY_DATA_GET_ALL_POST)
         val viewModel = MyPostViewModel(repository)
@@ -76,6 +75,7 @@ class MyPostViewModelTest {
      */
     @Test
     fun `test delete single data state`() = runTest {
+        var repository = FakePostRepository()
         repository.fakePostApi.remotePostDataMock.setExpectSuccess()
         repository.fakePostApi.remotePostDataMock.setExpectedResponse(PlaceHolderData.DUMMY_DATA_GET_ALL_POST)
         val viewModel = MyPostViewModel(repository)
@@ -100,6 +100,7 @@ class MyPostViewModelTest {
      */
     @Test
     fun `test add single data state`() = runTest {
+        var repository = FakePostRepository()
         repository.fakePostApi.remotePostDataMock.setExpectSuccess()
         repository.fakePostApi.remotePostDataMock.setExpectedResponse(PlaceHolderData.DUMMY_DATA_GET_ALL_POST)
         val viewModel = MyPostViewModel(repository)
@@ -122,6 +123,7 @@ class MyPostViewModelTest {
      */
     @Test
     fun `test errorState`() = runTest {
+        var repository = FakePostRepository()
         repository.fakePostApi.remotePostDataMock.setExpectFailure()
         repository.fakePostApi.remotePostDataMock.setExpectedResponse(null)
         val viewModel = MyPostViewModel(repository)

@@ -29,13 +29,20 @@ setModuleTestCoverageLimits(limits)
 
 android {
     namespace = "ytemplate.android.database"
+    defaultConfig {
+        javaCompileOptions {
+            annotationProcessorOptions {
+                arguments["room.schemaLocation"] = "$projectDir/schemas"
+            }
+        }
+    }
 }
 
 dependencies {
     implementation(project(mapOf("path" to ":core:common")))
     // Room
     implementation(versionCatalogLibs.bundles.room)
-    kapt(versionCatalogLibs.room.compiler)
+    ksp(versionCatalogLibs.room.compiler)
     implementation(versionCatalogLibs.androidx.test.monitor)
     androidTestImplementation(versionCatalogLibs.bundles.test)
     androidTestImplementation(versionCatalogLibs.coroutine.test)
