@@ -73,7 +73,7 @@ test_runner = "1.4.0"
 #sonar
 sonar = "4.0.0.2929"
 #dokka
-dokka = "1.7.20"
+dokka = "1.8.10"
 #ktlint
 ktlint = "11.2.0"
 
