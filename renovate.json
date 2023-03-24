@@ -3,5 +3,53 @@
   "extends": [
     "config:base"
   ],
-  "baseBranches": ["feature/CM-1239-RenovateBotFix"]
+  "baseBranches": [
+    "feature/CM-1239-RenovateBotFix"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "androidx-compose-bom",
+        "androidx-activity-compose"
+      ],
+      "groupName": "androidx compose",
+      "schedule": [
+        "after 10am"
+      ]
+    },
+    {
+      "matchPackageNames": [
+        "hilt_compiler",
+        "hilt_android",
+        "hilt_test",
+        "hilt_nav_compose",
+        "hilt_ext_compiler"
+      ],
+      "groupName": "hilt",
+      "schedule": [
+        "after 10am"
+      ]
+    },
+    {
+      "matchPackageNames": ["room_runtime","room_compiler","room_ktx","room_test"],
+      "groupName": "room",
+      "schedule": [
+        "after 10am"
+      ]
+    },
+    {
+      "matchPackageNames": [
+        "ktor_core",
+        "ktor_client",
+        "ktor_content_negotiation",
+        "ktor_serialization",
+        "ktor_client_logging",
+        "kotlinx_serialization",
+        "ktor_client_mock"],
+      "groupName": "ktor",
+      "schedule": [
+        "after 10am"
+      ]
+    }
+  ]
 }
