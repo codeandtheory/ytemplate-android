@@ -4,7 +4,7 @@
 kotlinVersion = "1.8.10"
 kotlinJvmTarget = "11"
 kotlinxCoroutines = "1.6.4"
-kotlinxSerializationJson = "1.4.1"
+kotlinxSerializationJson = "1.5.0"
 
 #gradle
 androidGradlePlugin = "7.4.2"
