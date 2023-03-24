@@ -56,7 +56,7 @@ ktor = "2.2.2"
 #android test
 junit4 = "4.13.2"
 
-android_junit = "1.1.4"
+android_junit = "1.1.5"
 espresso = "3.5.0"
 junit = "4.13.2"
 jupiter_junit = "5.5.2"
