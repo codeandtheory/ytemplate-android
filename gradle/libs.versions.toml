@@ -75,7 +75,7 @@ sonar = "4.0.0.2929"
 #dokka
 dokka = "1.8.10"
 #ktlint
-ktlint = "11.2.0"
+ktlint = "11.3.1"
 
 [libraries]
 # Project
