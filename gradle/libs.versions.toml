@@ -21,7 +21,7 @@ androidxEspresso = "3.5.1"
 androidxTestRules = "1.5.0"
 androidxTestRunner = "1.5.1"
 androidxTestMonitor = "1.6.1"
-androidxTestCore = "1.4.0"
+androidxTestCore = "1.5.0"
 androidxTestExt = "1.1.5"
 
 #hilt
