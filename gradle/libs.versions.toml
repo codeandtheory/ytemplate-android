@@ -63,7 +63,7 @@ jupiter_junit = "5.9.2"
 
 #Firebase
 firebase_analytics = "21.2.1"
-firebase_bom = "31.2.3"
+firebase_bom = "31.4.0"
 
 #Mock
 anotation = "1.6.0"
