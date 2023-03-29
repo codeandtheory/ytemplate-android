@@ -52,5 +52,6 @@
         "after 10am"
       ]
     }
-  ]
+  ],
+  "ignoreDeps": ["androidx.annotation:annotation", "androidx.test.core-ktx","androidx.test.core"]
 }
