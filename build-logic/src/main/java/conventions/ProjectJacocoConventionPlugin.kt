@@ -125,8 +125,6 @@ class ProjectJacocoConventionPlugin : Plugin<Project> {
 
     private fun Project.addReportMergingTask() {
         tasks.register<JacocoReport>("MergeHTMLJacocoReports") {
-            group = "Reporting"
-            description = "Merge all generated JacocoReport"
             logger.quiet("======Merging HTML Reports=========")
             val javaClasses :MutableCollection<String> = mutableListOf()
             val kotlinClasses :MutableCollection<String> = mutableListOf()
