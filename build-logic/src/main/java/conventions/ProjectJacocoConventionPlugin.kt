@@ -43,112 +43,38 @@ class ProjectJacocoConventionPlugin : Plugin<Project> {
             with(pluginManager) {
                 apply("jacoco")
             }
-            tasks.register("createMergedJacocoReport") {
+            tasks.register<JacocoReport>("MergeHTMLJacocoReports") {
                 val jacocoReport = this
                 group = "Reporting"
-                description = "Generate test coverage reports on the debug build"
+                description = "Merge all generated JacocoReport"
+                logger.quiet("======Merging HTML Reports=========")
+                val javaClasses: MutableCollection<String> = mutableListOf()
+                val kotlinClasses: MutableCollection<String> = mutableListOf()
+                val sourceDir: MutableCollection<String> = mutableListOf()
+                val coverageFiles: MutableCollection<String> = mutableListOf()
                 subprojects {
-                    val subproject = this
-                    subproject.plugins.withType<JacocoPlugin>().configureEach {
-                        if (tasks.findByName("createDemoDebugJacocoReport") != null) {
-                            val moduleTask = tasks.findByName("createDemoDebugJacocoReport")
-                            jacocoReport.dependsOn(moduleTask)
-                        }
+                    val subProject = this
+                    subProject.plugins.withType<JacocoPlugin>().configureEach {
+                        val moduleTask = tasks.findByName("createDemoDebugJacocoReport")
+                        jacocoReport.dependsOn(moduleTask)
+                        javaClasses.add("${subProject.buildDir}/intermediates/javac/demoDebug/classes")
+                        kotlinClasses.add("${subProject.buildDir}/tmp/kotlin-classes/demoDebug")
+                        sourceDir.add("${subProject.projectDir}/src/main/java")
+                        sourceDir.add("${subProject.projectDir}/src/main/kotlin")
+                        sourceDir.add("${subProject.projectDir}/src/demoDebug/java")
+                        coverageFiles.add("${subProject.buildDir}/outputs/unit_test_code_coverage/demoDebugUnitTest/testDemoDebugUnitTest.exec")
+                        coverageFiles.add("${subProject.buildDir}/outputs/code_coverage/demoDebugAndroidTest/connected/coverage.ec")
                     }
                 }
-                doLast {
-                    logger.lifecycle("Making Overall coverage report")
-                    addReportMergingTask()
-                    val metrics = mutableMapOf<String, Map<String, Double>>()
-                    val moduleLimits = mutableMapOf<String, Map<String, Double>>()
-                    val failures = mutableMapOf<String, List<String>>()
-
-                    if (!extra.has("limits")) {
-                        setProjectTestCoverageLimits()
-                    }
-                    subprojects {
-                        if (tasks.findByName("createDemoDebugJacocoReport") != null) {
-                            val reportDir = jacoco.reportsDirectory.asFile.get()
-                            val report =
-                                file("$reportDir/createDemoDebugJacocoReport/createDemoDebugJacocoReport.xml")
-                            if (report.exists()) {
-                                logger.lifecycle("Checking coverage results:$report")
-                                metrics[project.name] = report.extractTestCoverage()
-                                moduleLimits[project.name] =
-                                    project.extra["limits"] as Map<String, Double>
-                            }
-                        }
-                    }
-                    metrics.forEach { (key, metricsMap) ->
-                        val extractedMetricsMap = mutableMapOf<String, Double>()
-                        if (metricsMap.isNotEmpty()) {
-                            val failureMap = metricsMap.filter { item ->
-                                item.value < moduleLimits[key]!![item.key]!!
-                            }.map { item ->
-                                extractedMetricsMap[item.key] = item.value
-                                "-${item.key} coverage is: ${item.value}%, minimum is ${moduleLimits[item.key]}%"
-                            }
-                            if (failureMap.isNotEmpty()) {
-                                failures[key] = failureMap
-                            }
-                        }
-                        moduleLimits[key] = extractedMetricsMap
-                    }
-
-
-                    if (failures.isNotEmpty()) {
-                        logger.quiet("======Code coverage failures=========")
-                        failures.forEach { entry ->
-                            logger.quiet("======Module: ${entry.key}=========")
-                            entry.value.forEach { logger.quiet(it) }
-                        }
-                        logger.quiet("===========================================")
-                    }
-
-                    if (metrics.isNotEmpty()) {
-                        logger.quiet("======Code coverage success=========")
-                        metrics.forEach { entry ->
-                            logger.quiet("======Module: ${entry.key}=========")
-                            entry.value.forEach {
-                                logger.quiet("- ${it.key} coverage: ${it.value}")
-                            }
-                        }
-                        logger.quiet("===========================================")
-                    }
+                classDirectories.setFrom(files(javaClasses, kotlinClasses))
+                additionalClassDirs.setFrom(files(sourceDir))
+                sourceDirectories.setFrom(files(sourceDir))
+                executionData.setFrom(files(coverageFiles))
+                reports {
+                    xml.required.set(true)
+                    html.required.set(true)
                 }
-
-            }
-
-
-        }
-    }
-
-    private fun Project.addReportMergingTask() {
-        tasks.register<JacocoReport>("MergeHTMLJacocoReports") {
-            logger.quiet("======Merging HTML Reports=========")
-            val javaClasses :MutableCollection<String> = mutableListOf()
-            val kotlinClasses :MutableCollection<String> = mutableListOf()
-            val sourceDir :MutableCollection<String> = mutableListOf()
-            val coverageFiles :MutableCollection<String> = mutableListOf()
-            subprojects.forEach { subProject ->
-                javaClasses.add("${subProject.buildDir}/intermediates/javac/demoDebug/classes")
-                kotlinClasses.add("${subProject.buildDir}/tmp/kotlin-classes/demoDebug")
-                sourceDir.add( "${subProject.projectDir}/src/main/java")
-                sourceDir.add( "${subProject.projectDir}/src/main/kotlin")
-                sourceDir.add( "${subProject.projectDir}/src/demoDebug/java")
-                coverageFiles.add("${subProject.buildDir}/outputs/unit_test_code_coverage/demoDebugUnitTest/testDemoDebugUnitTest.exec")
-                coverageFiles.add("${subProject.buildDir}/outputs/code_coverage/demoDebugAndroidTest/connected/coverage.ec")
-            }
-            classDirectories.setFrom(files(javaClasses, kotlinClasses))
-            additionalClassDirs.setFrom(files(sourceDir))
-            sourceDirectories.setFrom(files(sourceDir))
-            executionData.setFrom(files(coverageFiles))
-            reports {
-                xml.required.set(true)
-                html.required.set(true)
             }
         }
-
     }
-
 }
