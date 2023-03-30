@@ -45,7 +45,7 @@ ksp = "1.8.10-1.0.9"
 
 #coroutine
 coroutine = "1.6.4"
-turbine = "0.12.1"
+turbine = "0.12.3"
 
 #room
 room= "2.5.1"
