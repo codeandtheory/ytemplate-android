@@ -32,7 +32,12 @@
       ]
     },
     {
-      "matchPackageNames": ["room_runtime","room_compiler","room_ktx","room_test"],
+      "matchPackageNames": [
+        "room_runtime",
+        "room_compiler",
+        "room_ktx",
+        "room_test"
+      ],
       "groupName": "room",
       "schedule": [
         "after 10am"
@@ -46,12 +51,19 @@
         "ktor_serialization",
         "ktor_client_logging",
         "kotlinx_serialization",
-        "ktor_client_mock"],
+        "ktor_client_mock"
+      ],
       "groupName": "ktor",
       "schedule": [
         "after 10am"
       ]
     }
   ],
-  "ignoreDeps": ["androidx.annotation:annotation", "androidx.test.core-ktx","androidx.test.core"]
+  "//developer-notice": "Ignored dependencies because of a hard dependency constraint on testing and analytics library",
+  "ignoreDeps": [
+    "androidx.annotation:annotation",
+    "androidx.test.core-ktx",
+    "androidx.test.core"
+  ]
 }
+
