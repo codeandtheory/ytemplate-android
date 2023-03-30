@@ -1,3 +1,5 @@
+import ytemplate.android.jacoco.addExclusion
+
 @Suppress("DSL_SCOPE_VIOLATION") // scope violation issue: work around suggested from: https://github.com/gradle/gradle/issues/22797
 plugins {
     id("ytemplate.android.application")
@@ -5,7 +7,11 @@ plugins {
     id("ytemplate.android.application.compose")
     id("ytemplate.android.hilt")
 }
-
+private val excludedFiles = mutableSetOf(
+    "**/ytemplate/android/MainActivity.*",
+    "**/ytemplate/android/YTemplate.*"
+)
+addExclusion(excludedFiles)
 android {
     namespace = "ytemplate.android"
     defaultConfig {

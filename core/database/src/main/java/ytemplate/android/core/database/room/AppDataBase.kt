@@ -11,7 +11,7 @@ import ytemplate.android.core.database.model.PostEntity
  *
  * @constructor Create empty App data base
  */
-@Database(entities = [PostEntity::class], version = DATABASE_VERSION)
+@Database(entities = [PostEntity::class], version = DATABASE_VERSION, exportSchema = false)
 abstract class AppDataBase : RoomDatabase() {
     /**
      * My model dao

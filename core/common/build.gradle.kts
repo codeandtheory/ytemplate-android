@@ -3,8 +3,8 @@ import ytemplate.android.jacoco.setModuleTestCoverageLimits
 
 plugins {
     id("ytemplate.android.library")
-    id("ytemplate.android.library.jacoco")
     id("ytemplate.android.hilt")
+    id("ytemplate.android.library.jacoco")
 }
 
 private val excludedFiles = mutableSetOf(

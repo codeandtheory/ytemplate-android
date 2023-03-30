@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 buildscript {
     repositories {
         mavenCentral()
@@ -14,6 +16,7 @@ buildscript {
 plugins {
     alias(versionCatalogLibs.plugins.kotlin.serialization) apply false
     alias(versionCatalogLibs.plugins.hilt) apply false
+    alias(versionCatalogLibs.plugins.ksp) apply false
     alias(versionCatalogLibs.plugins.sonar)
     alias(versionCatalogLibs.plugins.dokka)
     alias(versionCatalogLibs.plugins.ktlint)

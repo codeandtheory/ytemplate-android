@@ -15,6 +15,7 @@ import ytemplate.android.jacoco.jacoco
  *
  * @constructor Create empty Library jacoco convention plugin
  */
+@Suppress("UNCHECKED_CAST")
 class ProjectJacocoConventionPlugin : Plugin<Project> {
     private val project_level_limits = mutableMapOf(
         "instruction" to 0.0,
@@ -36,7 +37,6 @@ class ProjectJacocoConventionPlugin : Plugin<Project> {
 
     override fun apply(target: Project) {
         with(target) {
-            val libs = extensions.getByType<VersionCatalogsExtension>().named("versionCatalogLibs")
             with(pluginManager) {
                 apply("jacoco")
             }
