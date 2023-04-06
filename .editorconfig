@@ -12,7 +12,7 @@ insert_final_newline = true
 
 [*.{java,kt,kts,scala,rs,xml,kt.spec,kts.spec}]
 indent_size = 4
-disabled_rules=no-wildcard-imports
+ktlint_disabled_rules=no-wildcard-imports
 
 [*.{kt,kts}]
 ktlint_code_style = ktlint_official

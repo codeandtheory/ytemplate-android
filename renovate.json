@@ -1,0 +1,69 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base"
+  ],
+  "baseBranches": [
+    "feature/CM-1239-RenovateBotFix",
+    "multi_module"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "androidx-compose-bom",
+        "androidx-activity-compose"
+      ],
+      "groupName": "androidx compose",
+      "schedule": [
+        "after 10am"
+      ]
+    },
+    {
+      "matchPackageNames": [
+        "hilt_compiler",
+        "hilt_android",
+        "hilt_test",
+        "hilt_nav_compose",
+        "hilt_ext_compiler"
+      ],
+      "groupName": "hilt",
+      "schedule": [
+        "after 10am"
+      ]
+    },
+    {
+      "matchPackageNames": [
+        "room_runtime",
+        "room_compiler",
+        "room_ktx",
+        "room_test"
+      ],
+      "groupName": "room",
+      "schedule": [
+        "after 10am"
+      ]
+    },
+    {
+      "matchPackageNames": [
+        "ktor_core",
+        "ktor_client",
+        "ktor_content_negotiation",
+        "ktor_serialization",
+        "ktor_client_logging",
+        "kotlinx_serialization",
+        "ktor_client_mock"
+      ],
+      "groupName": "ktor",
+      "schedule": [
+        "after 10am"
+      ]
+    }
+  ],
+  "//developer-notice": "Ignored dependencies because of a hard dependency constraint on testing and analytics library",
+  "ignoreDeps": [
+    "androidx.annotation:annotation",
+    "androidx.test.core-ktx",
+    "androidx.test.core"
+  ]
+}
+

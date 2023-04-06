@@ -20,8 +20,8 @@ class FakePostRepository(val fakePostDao: FakePostDao = FakePostDao(), val fakeP
     private val _feed = MutableSharedFlow<List<Post>>()
     override val feed: SharedFlow<List<Post>> = _feed.asSharedFlow()
 
-    override suspend fun add(post: Post) {
-        fakePostDao.insert(post.map())
+    override suspend fun add(postItem: Post) {
+        fakePostDao.insert(postItem.map())
         emitData()
     }
 
@@ -40,7 +40,7 @@ class FakePostRepository(val fakePostDao: FakePostDao = FakePostDao(), val fakeP
                 AppResult.Success(remoteData.toPostList())
             } else {
                 emitData()
-                AppResult.Error((remoteData as AppResult.Error).exception)
+                AppResult.Error()
             }
         } catch (ex: Exception) {
             emitData()

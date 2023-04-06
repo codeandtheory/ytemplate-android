@@ -74,7 +74,11 @@ fun PostListScreen(viewModel: MyPostViewModel = hiltViewModel()) {
                 AppLoadingIndicator()
             }
             is MyPostModelUiState.Error -> {
-                StickyErrorMessageCard((dataState as MyPostModelUiState.Error).throwable.localizedMessage)
+                (dataState as MyPostModelUiState.Error).throwable.localizedMessage?.let {
+                    StickyErrorMessageCard(
+                        it
+                    )
+                }
             }
         }
     }
@@ -144,7 +148,7 @@ fun PreviewPostListScreen() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .padding(dimensions.paddingLarge)
-            ) { newPost ->
+            ) { _ ->
             }
             SimplePostList(
                 listOf(

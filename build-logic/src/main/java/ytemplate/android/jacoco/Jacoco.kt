@@ -212,8 +212,8 @@ private fun Project.addTestCoverageTask(
         }
     }
 }
-
-fun Project.jacocoTestReport(taskName: String) {
+@Suppress("UNCHECKED_CAST")
+ fun Project.jacocoTestReport(taskName: String) {
     val reportDir = jacoco.reportsDirectory.asFile.get()
     val report = file("$reportDir/$taskName/${taskName}.xml")
     logger.lifecycle("Checking coverage results:$report")
@@ -239,7 +239,7 @@ fun Project.jacocoTestReport(taskName: String) {
     }
 
 }
-
+@Suppress("UNCHECKED_CAST")
 fun File.extractTestCoverage(): Map<String, Double> {
     val xmlReader = XmlSlurper().apply {
         setFeature("http://apache.org/xml/features/nonvalidating/load-external-dtd", false)

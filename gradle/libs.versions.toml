@@ -4,33 +4,33 @@
 kotlinVersion = "1.8.10"
 kotlinJvmTarget = "11"
 kotlinxCoroutines = "1.6.4"
-kotlinxSerializationJson = "1.4.1"
+kotlinxSerializationJson = "1.5.0"
 
 #gradle
-androidGradlePlugin = "7.4.1"
+androidGradlePlugin = "7.4.2"
 
 #androidx
-androidxComposeBom = "2022.12.00"
-androidxActivityCompose = "1.6.1"
-androidxAppCompat = "1.5.1"
+androidxComposeBom = "2023.03.00"
+androidxActivityCompose = "1.7.0"
+androidxAppCompat = "1.6.1"
 androidxComposeCompiler = "1.4.3"
 androidxCore = "1.9.0"
-androidxLifecycle = "2.5.1"
+androidxLifecycle = "2.6.1"
 androidxNavigation = "2.5.3"
-androidxEspresso = "3.5.0"
+androidxEspresso = "3.5.1"
 androidxTestRules = "1.5.0"
-androidxTestRunner = "1.5.1"
-androidxTestMonitor = "1.6.0"
+androidxTestRunner = "1.5.2"
+androidxTestMonitor = "1.6.1"
 androidxTestCore = "1.4.0"
-androidxTestExt = "1.1.4"
+androidxTestExt = "1.1.5"
 
 #hilt
-hilt = "2.44"
+hilt = "2.45"
 hilt_nav_compose = "1.0.0"
 hiltExt = "1.0.0"
 
 #jacoco
-jacoco = "0.8.7"
+jacoco = "0.8.8"
 
 #compose
 compose_ui = "1.3.3"
@@ -41,41 +41,41 @@ compose_ui_testing = "1.4.0-beta01"
 core_ktx = "1.9.0"
 
 #ksp
-ksp = "1.7.21-1.0.8"
+ksp = "1.8.10-1.0.9"
 
 #coroutine
 coroutine = "1.6.4"
 turbine = "0.12.1"
 
 #room
-room= "2.4.3"
+room= "2.5.1"
 
 #ktor
-ktor = "2.2.2"
+ktor = "2.2.4"
 
 #android test
 junit4 = "4.13.2"
 
-android_junit = "1.1.4"
+android_junit = "1.1.5"
 espresso = "3.5.0"
 junit = "4.13.2"
-jupiter_junit = "5.5.2"
+jupiter_junit = "5.9.2"
 
 #Firebase
-firebase_analytics = "21.2.0"
-firebase_bom = "29.0.0"
+firebase_analytics = "21.2.1"
+firebase_bom = "31.4.0"
 
 #Mock
 anotation = "1.3.0"
-mockk_android = "1.12.1"
-test_runner = "1.4.0"
+mockk_android = "1.13.4"
+test_runner = "1.5.2"
 
 #sonar
 sonar = "4.0.0.2929"
 #dokka
-dokka = "1.7.20"
+dokka = "1.8.10"
 #ktlint
-ktlint = "11.2.0"
+ktlint = "11.3.1"
 
 [libraries]
 # Project

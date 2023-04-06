@@ -32,5 +32,4 @@ class HiltConventionPlugin : Plugin<Project> {
 
         }
     }
-
 }
