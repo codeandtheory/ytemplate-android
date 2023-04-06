@@ -3,6 +3,7 @@ package conventions
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.api.artifacts.VersionCatalogsExtension
+import org.gradle.api.file.FileTree
 import org.gradle.configurationcache.extensions.capitalized
 import org.gradle.kotlin.dsl.extra
 import org.gradle.kotlin.dsl.getByType
@@ -18,47 +19,47 @@ import ytemplate.android.jacoco.jacoco
  *
  * @constructor Create empty Library jacoco convention plugin
  */
+@Suppress("UNCHECKED_CAST")
 class ProjectJacocoConventionPlugin : Plugin<Project> {
-    private val project_level_limits = mutableMapOf(
-        "instruction" to 0.0,
-        "branch" to 0.0,
-        "line" to 0.0,
-        "complexity" to 0.0,
-        "method" to 0.0,
-        "class" to 0.0
-    )
-
-
-    fun Project.setProjectTestCoverageLimits(projectLimits: Map<String, Double>? = null) {
-        if (projectLimits != null) {
-            extra.set("limits", projectLimits)
-        } else {
-            extra.set("limits", project_level_limits)
-        }
-    }
-
     override fun apply(target: Project) {
         with(target) {
-            val libs = extensions.getByType<VersionCatalogsExtension>().named("versionCatalogLibs")
             with(pluginManager) {
                 apply("jacoco")
             }
-            tasks.register<JacocoReport>("MergeHTMLJacocoReports") {
+
+            tasks.register<JacocoReport>("createMergedJacocoReport") {
                 val jacocoReport = this
                 group = "Reporting"
-                description = "Merge all generated JacocoReport"
+                description = "create Project Jacoco Report for debug builds for all submodules with jacoco plugin"
                 logger.quiet("======Merging HTML Reports=========")
-                val javaClasses: MutableCollection<String> = mutableListOf()
-                val kotlinClasses: MutableCollection<String> = mutableListOf()
+                val javaClasses: MutableCollection<FileTree> = mutableListOf()
+                val kotlinClasses: MutableCollection<FileTree> = mutableListOf()
                 val sourceDir: MutableCollection<String> = mutableListOf()
                 val coverageFiles: MutableCollection<String> = mutableListOf()
+
                 subprojects {
                     val subProject = this
                     subProject.plugins.withType<JacocoPlugin>().configureEach {
                         val moduleTask = tasks.findByName("createDemoDebugJacocoReport")
                         jacocoReport.dependsOn(moduleTask)
-                        javaClasses.add("${subProject.buildDir}/intermediates/javac/demoDebug/classes")
-                        kotlinClasses.add("${subProject.buildDir}/tmp/kotlin-classes/demoDebug")
+                    }
+                    if(subProject.plugins.findPlugin(JacocoPlugin::class.java)!=null) {
+                        val excludedFiles: MutableCollection<String> = mutableListOf()
+                        if (subProject.extra.has("excludes")) {
+                            excludedFiles.addAll(subProject.extra.get("excludes") as List<String>)
+                        }
+                        javaClasses.add(fileTree("${subProject.buildDir}/intermediates/javac/demoDebug/classes") {
+                            if (excludedFiles.isNotEmpty()) {
+                                exclude(excludedFiles)
+                            }
+
+                        }.asFileTree)
+                        kotlinClasses.add(fileTree("${subProject.buildDir}/tmp/kotlin-classes/demoDebug") {
+                            if (excludedFiles.isNotEmpty()) {
+                                exclude(excludedFiles)
+                            }
+                        }.asFileTree)
+
                         sourceDir.add("${subProject.projectDir}/src/main/java")
                         sourceDir.add("${subProject.projectDir}/src/main/kotlin")
                         sourceDir.add("${subProject.projectDir}/src/demoDebug/java")
