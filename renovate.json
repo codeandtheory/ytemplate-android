@@ -15,7 +15,7 @@
       ],
       "groupName": "androidx compose",
       "schedule": [
-        "after 10am"
+        "on the first day of the month"
       ]
     },
     {
@@ -28,7 +28,7 @@
       ],
       "groupName": "hilt",
       "schedule": [
-        "after 10am"
+        "on the first day of the month"
       ]
     },
     {
@@ -40,7 +40,7 @@
       ],
       "groupName": "room",
       "schedule": [
-        "after 10am"
+        "on the first day of the month"
       ]
     },
     {
@@ -55,7 +55,7 @@
       ],
       "groupName": "ktor",
       "schedule": [
-        "after 10am"
+        "on the first day of the month"
       ]
     }
   ],
