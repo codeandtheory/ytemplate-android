@@ -41,7 +41,7 @@ private val excludedFiles = mutableSetOf(
     "**/Dagger*Component.class",
     "**/Dagger*Component\$Builder.class",
     "**/*Module_*Factory.class",
-    "**hilt_aggregated_deps**",
+    "**hilt*aggregated*deps**",
     "**/dagger/**",
     "**/di/module/*",
     "**/*_Factory*.*",
@@ -90,6 +90,7 @@ fun Project.addExclusion(excludes: Set<String>? = null) {
     if (excludes != null) {
         excludedFiles.addAll(excludes)
     }
+    extra.set("excludes",excludedFiles.toList())
 }
 
 internal fun Project.setupJacocoPlugin() {
@@ -99,6 +100,9 @@ internal fun Project.setupJacocoPlugin() {
     }
     if (!extra.has("limits")) {
         setModuleTestCoverageLimits()
+    }
+    if (!extra.has("excludes")) {
+        addExclusion()
     }
 
     val buildTypes = android.buildTypes.map { type -> type.name }
