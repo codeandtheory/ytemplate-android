@@ -61,6 +61,7 @@
   ],
   "//developer-notice": "Ignored dependencies because of a hard dependency constraint on testing and analytics library",
   "ignoreDeps": [
+    "org.jetbrains.kotlin:kotlin-gradle-plugin",
     "androidx.annotation:annotation",
     "androidx.test.core-ktx",
     "androidx.test.core"

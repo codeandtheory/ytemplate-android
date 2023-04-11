@@ -1,7 +1,7 @@
 [versions]
 # Define the dependency versions
 #kotlin
-kotlinVersion = "1.8.20"
+kotlinVersion = "1.8.10"
 kotlinJvmTarget = "11"
 kotlinxCoroutines = "1.6.4"
 kotlinxSerializationJson = "1.5.0"
@@ -13,7 +13,7 @@ androidGradlePlugin = "7.4.2"
 androidxComposeBom = "2023.03.00"
 androidxActivityCompose = "1.7.0"
 androidxAppCompat = "1.6.1"
-androidxComposeCompiler = "1.4.3"
+androidxComposeCompiler = "1.4.4"
 androidxCore = "1.9.0"
 androidxLifecycle = "2.6.1"
 androidxNavigation = "2.5.3"
