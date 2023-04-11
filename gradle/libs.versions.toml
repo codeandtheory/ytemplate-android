@@ -13,7 +13,7 @@ androidGradlePlugin = "7.4.2"
 androidxComposeBom = "2023.03.00"
 androidxActivityCompose = "1.7.0"
 androidxAppCompat = "1.6.1"
-androidxComposeCompiler = "1.4.3"
+androidxComposeCompiler = "1.4.4"
 androidxCore = "1.9.0"
 androidxLifecycle = "2.6.1"
 androidxNavigation = "2.5.3"
@@ -30,7 +30,7 @@ hilt_nav_compose = "1.0.0"
 hiltExt = "1.0.0"
 
 #jacoco
-jacoco = "0.8.8"
+jacoco = "0.8.9"
 
 #compose
 compose_ui = "1.3.3"
@@ -45,7 +45,7 @@ ksp = "1.8.10-1.0.9"
 
 #coroutine
 coroutine = "1.6.4"
-turbine = "0.12.1"
+turbine = "0.12.3"
 
 #room
 room= "2.5.1"

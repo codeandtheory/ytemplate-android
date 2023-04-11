@@ -11,7 +11,7 @@ The project includes a shell script file `YTemplate.sh` which renames and restru
   - `./YTemplate.sh <package_name> <application_name>`.
 
 Note: To run the shell script on Windows, one can run bash on ubuntu in Windows(starting from Windows 10).
-Type ` bash YTemplate.sh <package_name> <data_base_entity> <application_name>`. It will execute the script.
+Type ` bash YTemplate.sh <package_name> <application_name>`. It will execute the script.
 
 
 ## Features
@@ -23,6 +23,7 @@ Type ` bash YTemplate.sh <package_name> <data_base_entity> <application_name>`. 
 * Room database support for Local database.
 * Ktor for remote database connection.
 * Jacoco support for test report generation.
+
 
 ### Architecture
 Y—Template follows MVVM architecture. Different modules support different layers of MVVM architecture.
@@ -45,14 +46,14 @@ Y—Template follows MVVM architecture. Different modules support different laye
 ![](singleModuleArchitecture.png)
 
 ### How to generate test report
-- Generating jacoco test report
+- Generating jacoco debug test report
   - Gradle command `clean build createMergedJacocoReport`
     - From Android Studio
       - Open gradle menu bar from Android Studio right side panel
       - Click on the gradle icon and
       - In command popup window type `clean build createMergedJacocoReport` and press enter
       - Wait for the execution completion,
-      - After successful execution each module level execution report will be stored in 'module\build\reports\jacoco\html\index.html'.
+      - After successful execution report will be stored in 'project\build\reports\jacoco\html\index.html'.
 
 ### How to generate dokka report
 - Gradle command single module `clean build dokkaHtml` for multi-module `clean build dokkaHtmlMultiModule`

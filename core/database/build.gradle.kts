@@ -42,7 +42,7 @@ dependencies {
     implementation(project(mapOf("path" to ":core:common")))
     // Room
     implementation(versionCatalogLibs.bundles.room)
-    ksp(versionCatalogLibs.room.compiler)
+    kapt(versionCatalogLibs.room.compiler)
     implementation(versionCatalogLibs.androidx.test.monitor)
     androidTestImplementation(versionCatalogLibs.bundles.test)
     androidTestImplementation(versionCatalogLibs.coroutine.test)

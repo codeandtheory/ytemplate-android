@@ -15,7 +15,7 @@
       ],
       "groupName": "androidx compose",
       "schedule": [
-        "after 10am"
+        "on the first day of the month"
       ]
     },
     {
@@ -28,7 +28,7 @@
       ],
       "groupName": "hilt",
       "schedule": [
-        "after 10am"
+        "on the first day of the month"
       ]
     },
     {
@@ -40,7 +40,7 @@
       ],
       "groupName": "room",
       "schedule": [
-        "after 10am"
+        "on the first day of the month"
       ]
     },
     {
@@ -55,15 +55,14 @@
       ],
       "groupName": "ktor",
       "schedule": [
-        "after 10am"
+        "on the first day of the month"
       ]
     }
   ],
-  "//developer-notice": "Ignored dependencies because of a hard dependency constraint on testing and analytics library",
   "ignoreDeps": [
+    "org.jetbrains.kotlin:kotlin-gradle-plugin",
     "androidx.annotation:annotation",
     "androidx.test.core-ktx",
     "androidx.test.core"
   ]
 }
-
