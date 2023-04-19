@@ -62,7 +62,7 @@ junit = "4.13.2"
 jupiter_junit = "5.9.2"
 
 #Firebase
-firebase_analytics = "21.2.1"
+firebase_analytics = "21.2.2"
 firebase_bom = "31.4.0"
 
 #Mock
