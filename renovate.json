@@ -3,5 +3,65 @@
   "extends": [
     "config:base"
   ],
-    "baseBranches": ["multi_module"]
+  "baseBranches": [
+    "multi_module"
+  ],
+  "packageRules": [
+    {
+      "matchPackageNames": [
+        "androidx-compose-bom",
+        "androidx-activity-compose"
+      ],
+      "groupName": "androidx compose",
+      "schedule": [
+        "on the first day of the month"
+      ]
+    },
+    {
+      "matchPackageNames": [
+        "hilt_compiler",
+        "hilt_android",
+        "hilt_test",
+        "hilt_nav_compose",
+        "hilt_ext_compiler"
+      ],
+      "groupName": "hilt",
+      "schedule": [
+        "on the first day of the month"
+      ]
+    },
+    {
+      "matchPackageNames": [
+        "room_runtime",
+        "room_compiler",
+        "room_ktx",
+        "room_test"
+      ],
+      "groupName": "room",
+      "schedule": [
+        "on the first day of the month"
+      ]
+    },
+    {
+      "matchPackageNames": [
+        "ktor_core",
+        "ktor_client",
+        "ktor_content_negotiation",
+        "ktor_serialization",
+        "ktor_client_logging",
+        "kotlinx_serialization",
+        "ktor_client_mock"
+      ],
+      "groupName": "ktor",
+      "schedule": [
+        "on the first day of the month"
+      ]
+    }
+  ],
+  "ignoreDeps": [
+    "org.jetbrains.kotlin:kotlin-gradle-plugin",
+    "androidx.annotation:annotation",
+    "androidx.test.core-ktx",
+    "androidx.test.core"
+  ]
 }
