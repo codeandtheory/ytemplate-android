@@ -41,7 +41,7 @@ compose_ui_testing = "1.4.0-beta01"
 core_ktx = "1.9.0"
 
 #ksp
-ksp = "1.8.10-1.0.9"
+ksp = "1.8.20-1.0.11"
 
 #coroutine
 coroutine = "1.6.4"
