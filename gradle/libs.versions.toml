@@ -67,7 +67,7 @@ firebase_bom = "31.4.0"
 
 #Mock
 anotation = "1.3.0"
-mockk_android = "1.13.4"
+mockk_android = "1.13.5"
 test_runner = "1.5.2"
 
 #sonar
