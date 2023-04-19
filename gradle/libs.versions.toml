@@ -38,7 +38,7 @@ compose_ui_testing = "1.4.0-beta01"
 
 
 #ktx
-core_ktx = "1.9.0"
+core_ktx = "1.10.0"
 
 #ksp
 ksp = "1.8.10-1.0.9"
