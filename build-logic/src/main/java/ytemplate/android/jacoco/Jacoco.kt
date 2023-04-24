@@ -248,7 +248,7 @@ fun File.extractTestCoverage(): Map<String, Double> {
     val counterNodes: List<NodeChild> = xmlReader.parse(this).parent().children()
         .filter { (it as NodeChild).name() == "counter" } as List<NodeChild>
     return counterNodes.associate { child ->
-        val type = child.attributes()["type"].toString().toLowerCase(Locale.US)
+        val type = child.attributes()["type"].toString().lowercase(Locale.US)
         val covered = child.attributes()["covered"].toString().toDouble()
         val missed = child.attributes()["missed"].toString().toDouble()
         val percentage = ((covered / (covered + missed)) * 10000.0).roundToInt() / 100.0

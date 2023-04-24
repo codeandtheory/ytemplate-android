@@ -4,7 +4,6 @@
     "config:base"
   ],
   "baseBranches": [
-    "feature/CM-1239-RenovateBotFix",
     "multi_module"
   ],
   "packageRules": [
