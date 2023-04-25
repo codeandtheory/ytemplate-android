@@ -1,7 +1,7 @@
 [versions]
 # Define the dependency versions
 #kotlin
-kotlinVersion = "1.8.20"
+kotlinVersion = "1.8.21"
 kotlinJvmTarget = "17"
 kotlinxCoroutines = "1.6.4"
 kotlinxSerializationJson = "1.5.0"
