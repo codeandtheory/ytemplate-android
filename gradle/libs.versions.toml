@@ -59,7 +59,7 @@ junit4 = "4.13.2"
 android_junit = "1.1.5"
 espresso = "3.5.0"
 junit = "4.13.2"
-jupiter_junit = "5.9.2"
+jupiter_junit = "5.9.3"
 
 #Firebase
 firebase_analytics = "21.2.2"
