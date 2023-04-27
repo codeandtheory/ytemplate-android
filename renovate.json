@@ -1,7 +1,7 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base"
+    "config:base", "group:all", ":dependencyDashboard", "schedule:monthly"
   ],
   "baseBranches": [
     "multi_module"
@@ -9,50 +9,152 @@
   "packageRules": [
     {
       "matchPackageNames": [
-        "androidx-compose-bom",
-        "androidx-activity-compose"
+        "org.jetbrains.kotlin:kotlin-gradle-plugin",
+        "org.jetbrains.kotlin:kotlin-android-extensions",
+        "org.jetbrains.kotlin:kotlin-stdlib-common",
+        "org.jetbrains.kotlin.android",
+        "org.jetbrains.kotlin.jvm",
+        "org.jetbrains.kotlin:kotlin-serialization",
+        "com.google.devtools.ksp"
       ],
-      "groupName": "androidx compose",
+      "groupName": "kotlin",
+      "schedule": [
+        "on the first day of the month"
+      ]
+    },   {
+      "matchPackageNames": [
+        "com.android.application",
+        "com.android.library",
+        "com.android.tools.build:gradle"
+      ],
+      "groupName": "android",
+      "schedule": [
+        "on the first day of the month"
+      ]
+    },   {
+      "matchPackageNames": [
+        "com.google.dagger:hilt-android-compiler",
+        "com.google.dagger:hilt-android",
+        "com.google.dagger:hilt-android-testing",
+        "androidx.hilt:hilt-navigation-compose",
+        "androidx.hilt:hilt-compiler",
+        "com.google.dagger.hilt.android"
+      ],
+      "groupName": "dependencyInjection",
       "schedule": [
         "on the first day of the month"
       ]
     },
     {
       "matchPackageNames": [
-        "hilt_compiler",
-        "hilt_android",
-        "hilt_test",
-        "hilt_nav_compose",
-        "hilt_ext_compiler"
+        "androidx.core:core-ktx",
+        "androidx.lifecycle:lifecycle-runtime-ktx",
+        "androidx.navigation:navigation-testing",
+        "androidx.lifecycle:lifecycle-viewmodel-ktx",
+        "androidx.core:core-ktx",
+        "androidx.appcompat:appcompat"
       ],
-      "groupName": "hilt",
+      "groupName": "androidx",
       "schedule": [
         "on the first day of the month"
       ]
-    },
-    {
+    }, {
       "matchPackageNames": [
-        "room_runtime",
-        "room_compiler",
-        "room_ktx",
-        "room_test"
+        "androidx.activity:activity-compose",
+        "androidx.compose:compose-bom",
+        "androidx.compose.foundation",
+        "androidx.compose.ui:ui-test-manifest",
+        "androidx.compose.ui:ui-util",
+        "androidx.compose.ui:ui-tooling",
+        "androidx.compose.ui:ui-tooling-preview",
+        "androidx.compose.ui:ui-test-junit4",
+        "androidx.compose.material",
+        "androidx.compose.material3",
+        "androidx.compose.material3:material3-window-size-class",
+        "androidx.compose.runtime:runtime",
+        "androidx.compose.runtime:runtime-livedata",
+        "androidx.navigation:navigation-compose",
+        "androidx.lifecycle:lifecycle-viewmodel-compose"
+      ],
+      "groupName": "androidxCompose",
+      "schedule": [
+        "on the first day of the month"
+      ]
+    },{
+      "matchPackageNames": [
+        "androidx.room:room-runtime",
+        "androidx.room:room-compiler",
+        "androidx.room:room-ktx",
+        "androidx.room:room-testing"
       ],
       "groupName": "room",
       "schedule": [
         "on the first day of the month"
       ]
+    },{
+      "matchPackageNames": [
+        "io.ktor:ktor-client-core",
+        "io.ktor:ktor-client-okhttp",
+        "io.ktor:ktor-client-content-negotiation",
+        "io.ktor:ktor-serialization-kotlinx-json",
+        "io.ktor:ktor-client-logging",
+        "org.jetbrains.kotlinx:kotlinx-serialization-json",
+        "io.ktor:ktor-client-mock"
+      ],
+      "groupName": "ktor",
+      "schedule": [
+        "on the first day of the month"
+      ]
+    },{
+      "matchPackageNames": [
+        "com.google.firebase:firebase-analytics",
+        "com.google.firebase:firebase-bom"
+      ],
+      "groupName": "firebase",
+      "schedule": [
+        "on the first day of the month"
+      ]
     },
     {
       "matchPackageNames": [
-        "ktor_core",
-        "ktor_client",
-        "ktor_content_negotiation",
-        "ktor_serialization",
-        "ktor_client_logging",
-        "kotlinx_serialization",
-        "ktor_client_mock"
+        "org.jetbrains.kotlin:kotlin-test-common",
+        "com.android.test",
+        "androidx.test:runner",
+        "androidx.test:core",
+        "androidx.test:core-ktx",
+        "androidx.test.espresso:espresso-core",
+        "androidx.test.ext:junit",
+        "androidx.test.ext:junit-ktx",
+        "androidx.test:rules",
+        "androidx.test:monitor",
+        "io.mockk:mockk-android",
+        "androidx.annotation:annotation",
+        "org.junit.jupiter:junit-jupiter"
       ],
-      "groupName": "ktor",
+      "groupName": "test",
+      "schedule": [
+        "on the first day of the month"
+      ]
+    },    {
+      "matchPackageNames": [
+        "org.jetbrains.kotlinx:kotlinx-coroutines-core",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-android",
+        "org.jetbrains.kotlinx:kotlinx-coroutines-test",
+        "app.cash.turbine:turbine",
+        "androidx.test:core-ktx"
+      ],
+      "groupName": "coroutine",
+      "schedule": [
+        "on the first day of the month"
+      ]
+    } ,{
+      "matchPackageNames": [
+        "org.jlleitschuh.gradle.ktlint",
+        "org.jetbrains.dokka",
+        "org.sonarqube",
+        "org.jetbrains.dokka:dokka-gradle-plugin",
+        "org.jacoco:org.jacoco.core"],
+      "groupName": "others",
       "schedule": [
         "on the first day of the month"
       ]
