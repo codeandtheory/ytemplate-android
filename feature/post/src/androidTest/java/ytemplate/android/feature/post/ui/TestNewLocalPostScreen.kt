@@ -31,7 +31,7 @@ class TestNewLocalPostScreen {
     }
 
     @Test
-    fun testCreateNewPost(){
+    fun testCreateNewPost() {
         composeTestRule.setContent {
             YTemplateTheme {
                 ShowCreatePostOption(Modifier) {
