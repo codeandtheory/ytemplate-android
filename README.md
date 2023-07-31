@@ -10,7 +10,7 @@ The project includes a shell script file `YTemplate.sh` which renames and restru
   - `<application_name>` Optional input.
   - `./YTemplate.sh <package_name> <application_name>`.
 
-Note: To run the shell script on Windows, one can run bash on ubuntu in Windows(starting from Windows 10).
+Note: To run the shell script on Windows, one can run bash on ubuntu in Windows(starting from Windows 10) or GitWindows(https://git-scm.com/download/win).
 Type ` bash YTemplate.sh <package_name> <application_name>`. It will execute the script.
 
 

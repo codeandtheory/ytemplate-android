@@ -94,7 +94,7 @@ fun ShowNewPostScreen(
     var title by remember { mutableStateOf("") }
     var details by remember { mutableStateOf("") }
     Column(modifier = modifier) {
-        Box(modifier = Modifier.fillMaxWidth().padding(dimensions.paddingSmall)) {
+        Box(modifier = Modifier.fillMaxWidth().padding(dimensions.paddingSmall).testTag("new_post_title")) {
             Text(
                 modifier = Modifier.align(Alignment.CenterStart),
                 text = stringResource(R.string.new_post),
