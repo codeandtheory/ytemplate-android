@@ -1,7 +1,7 @@
 [versions]
 # Define the dependency versions
 #kotlin
-kotlinVersion = "1.8.20"
+kotlinVersion = "1.9.10"
 kotlinJvmTarget = "17"
 kotlinxCoroutines = "1.6.4"
 kotlinxSerializationJson = "1.5.0"
@@ -41,7 +41,7 @@ compose_ui_testing = "1.4.0-beta01"
 core_ktx = "1.9.0"
 
 #ksp
-ksp = "1.8.20-1.0.11"
+ksp = "1.9.10-1.0.13"
 
 #coroutine
 coroutine = "1.6.4"
