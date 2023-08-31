@@ -4,7 +4,7 @@
 kotlinVersion = "1.8.20"
 kotlinJvmTarget = "17"
 kotlinxCoroutines = "1.6.4"
-kotlinxSerializationJson = "1.5.0"
+kotlinxSerializationJson = "1.6.0"
 
 #gradle
 androidGradlePlugin = "8.0.0"
@@ -51,7 +51,7 @@ turbine = "0.12.3"
 room= "2.5.1"
 
 #ktor
-ktor = "2.2.4"
+ktor = "2.3.4"
 
 #android test
 junit4 = "4.13.2"
